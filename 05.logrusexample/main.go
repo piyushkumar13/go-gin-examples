@@ -16,15 +16,15 @@ type Student struct {
 func main() {
 
 	logrus.SetLevel(logrus.DebugLevel)
-	logrus.SetReportCaller(true)               // it will add more details to the logs like function name and file name as well.
-	logrus.SetFormatter(&logrus.TextFormatter{ // Formatting the log in text
-		DisableTimestamp: true,
-		FullTimestamp:    false,
-	})
-
-	//logrus.SetFormatter(&logrus.JSONFormatter{ // Formats the log in json
+	logrus.SetReportCaller(true) // it will add more details to the logs like function name and file name as well.
+	//logrus.SetFormatter(&logrus.TextFormatter{ // Formatting the log in text
 	//	DisableTimestamp: true,
+	//	FullTimestamp:    false,
 	//})
+
+	logrus.SetFormatter(&logrus.JSONFormatter{ // Formats the log in json
+		DisableTimestamp: true,
+	})
 
 	//logrus.SetOutput(os.Stdout) // set the output to console
 
