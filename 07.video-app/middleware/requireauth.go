@@ -19,6 +19,7 @@ func RequireAuth(ctx *gin.Context) {
 	if err != nil {
 		log.Println("Authorization header is not present in cookie")
 		ctx.AbortWithStatus(http.StatusUnauthorized)
+		return
 	}
 
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
@@ -33,6 +34,7 @@ func RequireAuth(ctx *gin.Context) {
 	if err != nil {
 		log.Println("Token is invalid")
 		ctx.AbortWithStatus(http.StatusUnauthorized)
+		return
 	}
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok {
@@ -58,5 +60,6 @@ func RequireAuth(ctx *gin.Context) {
 	} else {
 		log.Println("Token claims are invalid")
 		ctx.AbortWithStatus(http.StatusUnauthorized)
+		return
 	}
 }
