@@ -21,7 +21,7 @@ func Init() {
 
 	if err != nil {
 
-		fmt.Println("There was an error", err)
+		fmt.Println("There was an exception", err)
 		panic("Loading of config failed...")
 	}
 }

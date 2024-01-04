@@ -1,6 +1,9 @@
 package entity
 
-import "time"
+import (
+	"github.com/golang-jwt/jwt/v5"
+	"time"
+)
 
 type Person struct {
 	Id        uint   `json:"id" gorm:"primary_key;auto_increment"`
@@ -23,4 +26,15 @@ type Video struct {
 	PersonId    uint      `json:"-"`
 	CreatedAt   time.Time `json:"-" gorm:"type:TIMESTAMP;default:CURRENT_TIMESTAMP" json:"created_at"`
 	UpdatedAt   time.Time `json:"-" gorm:"type:TIMESTAMP;default:CURRENT_TIMESTAMP" json:"updated_at"`
+}
+
+type User struct {
+	Email    string `json:"email" binding:"required" gorm:"primary_key;type:varchar(100)"`
+	Password string `json:"password" binding:"required" gorm:"type:varchar(256)"`
+}
+
+type CustomJwtClaims struct {
+	jwt.RegisteredClaims
+	Authorities string `json:"authorities"`
+	Scope       string `json:"scopes"`
 }

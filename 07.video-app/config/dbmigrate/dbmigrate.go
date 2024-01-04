@@ -13,7 +13,7 @@ func init() {
 }
 func main() {
 
-	err := config.DB.AutoMigrate(&entity.Video{}, &entity.Person{})
+	err := config.DB.AutoMigrate(&entity.Video{}, &entity.Person{}, &entity.User{})
 
 	if err != nil {
 		log.Fatal("Cannot dbmigrate db", err.Error())

@@ -42,7 +42,7 @@ func setLogLevel(level string) {
 		logger.SetLevel(logger.DebugLevel)
 	case "info":
 		logger.SetLevel(logger.DebugLevel)
-	case "error":
+	case "exception":
 		logger.SetLevel(logger.DebugLevel)
 	default:
 		logger.SetLevel(logger.DebugLevel)
